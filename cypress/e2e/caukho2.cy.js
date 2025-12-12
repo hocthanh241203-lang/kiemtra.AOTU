@@ -1,15 +1,20 @@
-describe("Color Wheel Auto Spin Test", () => {
-    it("Lấy màu trúng từ lần quay đầu tiên và chọn đáp án đúng", () => {
-        cy.visit("https://practice.expandtesting.com/color-wheel");
+it.only("Quay bảng màu", () => {
+    const screenshotName = "wheel-result";
+    const specName = Cypress.spec.name;
 
-        // 1. Chờ màu trúng được highlight (ví dụ có class 'selected')
-        cy.get(".color.selected", { timeout: 10000 }).then(($el) => {
-            const winningColor = $el.text().trim();
-            cy.log("Màu trúng là: " + winningColor);
+    cy.visit("https://practice.expandtesting.com/color-wheel");
 
-            // 2. Chọn đáp án đúng dựa trên màu trúng
-            // Giả sử đáp án là button có text màu
-            cy.contains("button", winningColor).click();
-        });
-    });
-});
+    cy.get("#playBtn").contains("Play Game").click();
+
+    cy.wait(5000);
+    cy.get("#picker")
+      .screenshot(screenshotName, { overwrite: true })
+      .then(() => {
+        cy.task("detectWheelColor", { specName, screenshotName }).then(
+          (color) => {
+            cy.log(`Màu phát hiện: ${color.toUpperCase()}`);
+            cy.get("#answers").contains(`${color}`).click();
+          }
+        );
+      });
+  });

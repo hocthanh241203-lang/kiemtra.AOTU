@@ -1,21 +1,27 @@
 {
-  "name": "cypress",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "@4tw/cypress-drag-drop": "^2.3.1",
     "@testing-library/cypress": "^10.1.0",
-    "cypress": "^15.7.1",
-    "cypress-xpath": "^2.0.1"
+    "cypress": "^14.5.4",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^3.8.4",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.0",
+    "puppeteer": "^24.19.0",
+    "xlsx": "^0.18.5"
   },
   "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
+    "cypress-if": "^1.13.2",
+    "discord.js": "^14.22.1",
+    "googleapis": "^166.0.0",
+    "jimp": "^0.22.10",
+    "mailslurp-client": "^16.0.0",
     "tesseract.js": "^6.0.1"
+  },
+  "scripts": {
+    "start": "npx cypress open",
+    "test": "npx cypress run",
+    "report:pdf": "npx cypress run && node convert-report.js"
   }
 }

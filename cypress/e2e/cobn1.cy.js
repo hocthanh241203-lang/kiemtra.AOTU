@@ -2,7 +2,9 @@ describe("Test thử findByRole", () => {
     
     it("getByRole", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
-        cy.get('[role="link"]').contains("Contact").should("be.visible");
+         cy.findByRole("link", { name: "Contact" })
+      .should("be.visible");
+
     });
 
     it("getByText", () => {
@@ -30,37 +32,37 @@ describe("Test thử findByRole", () => {
             });
     });
 
-    it.only("getByPlaceholder", () => {
+    it("getByPlaceholder", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
         cy.get('input[placeholder="Search the site"]').should("be.visible");
     });
 
-       it.only("getByAltText", () => {
+       it("getByAltText", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
         cy.get('img[alt="User avatar"]').should("be.visible");
 
    
     });
-    it.only("getByTitle", () => {
+    it("getByTitle", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
         cy.get('[title="Settings panel"]').should("be.visible");
     });
-    it.only("🧪 getByTestId", () => {
+    it("🧪 getByTestId", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
         cy.get('[data-testid="status-message"]').should("be.visible");
         cy.get('[data-testid="user-name"]').should("be.visible");
     });
-    it.only(" Legacy class", () => {
+    it(" Legacy class", () => {
         cy.visit("https://practice.expandtesting.com/locators/");
         cy.get(".legacy-css ").should("be.visible");
     });
-    it.only("XPath – List", () => {
+    it("XPath – List", () => {
     cy.visit("https://practice.expandtesting.com/locators/");
 
     cy.get('ul.legacy-list > li')
       .should('have.length', 3);
   });
-  it.only("XPath - Table", () => {
+  it("XPath - Table", () => {
     cy.visit("https://practice.expandtesting.com/locators/");
 
     let total = 0;

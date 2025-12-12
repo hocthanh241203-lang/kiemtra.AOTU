@@ -15,8 +15,4 @@ describe("Lấy số Answer trong ảnh cuối trang", () => {
 });
 
 });
-
- 
-
-
 });
